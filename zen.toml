@@ -143,6 +143,7 @@ branch_max_length = 25
    newline = true
     
 
+
     [secondary_prompt]
       foreground = "p:yellow"
       background = "transparent"
