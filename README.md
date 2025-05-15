@@ -1,0 +1,2 @@
+# ohmyposh
+ohmyzshrc config
