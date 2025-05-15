@@ -1,0 +1,149 @@
+console_title_template = '{{ .Shell }} in {{ .Folder }}'
+version = 3
+final_space = true
+
+[palette]
+  black = '#29315A'
+  blue = '#1E90FF'
+  Dblue = '#002147'
+  green = '#59C9A5'
+  Dbrown = '#3D2C2E'
+  red = '#D81E5B'
+  orange = '#F07623'
+  yellow = '#F3AE35'
+  salmon = '#C56C58'
+  white = '#E0DEF4'
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+    [[blocks.segments]]
+    type = "os"
+    style = "diamond"
+    background= "p:black"
+  trailing_diamond = "<p:black,transparent></>"
+
+    template = " {{ if .WSL }}WSL at {{ end }}{{.Icon}}"
+    foreground_templates = [
+        "{{if gt .Code 0}}p:red{{end}}", #red, if equals 0
+        "{{if eq .Code 0}}p:white{{end}}",#magenta, if equals 
+    ]
+  [blocks.segments.properties]
+   macos = "\uf179 "
+    ubuntu = "\uf31b "
+   windows = " "
+
+ [[blocks.segments]]
+  type = "path"
+  style = "plain"
+  powerline_symbol = ""
+  # background = "p:Dblue"
+  template = " {{ .Path }} "
+  newline=true
+
+    [blocks.segments.properties]
+    style = "agnoster_short"
+    mixed_threshold = 6  #max amount of letters for mixed
+    max_depth = 2  #levels before agnoster uses folderIcon
+
+    # folder_separator_icon = "<p:white>\ueab6 </>"
+    folder_separator_icon = "/"
+
+## if we change style to agnoster
+    # folder_icon = " "
+    # folder_format = "<p:white>%s</>"
+
+##HOME apple
+    # home_icon = " \uf179 "
+    home_icon = ""
+    # hide_root_location = true
+    # left_format = "<p:transparentt>%s</>"
+## Cwd
+    right_format = "<#FA8072>%s</>"#salmon bright 
+
+ [[blocks.segments]]
+    background= "p:black"
+
+[[blocks]]
+type ='rprompt'
+# alignment = 'right'
+newline=true
+overflow = 'hidden'
+
+[[blocks.segments]]
+type = 'executiontime'
+foreground = 'p:yellow'
+background = 'transparent'
+# template = '{{ .FormattedMs }}s'
+[blocks.segments.properties]
+threshold = 5000 #5s
+style = 'roundrock'
+
+[[blocks.segments]]
+type = "git"
+style = "diamond"
+foreground= "p:yellow"
+background= "p:Dblue"
+
+leading_diamond ="<p:Dblue,transparent>\ue0b2</>"
+trailing_diamond = "<p:Dblue,transparent>\ue0b0</>"
+#background = "#191f48"
+#powerline_symbol = ""
+# trailing_diamond = ""
+foreground_templates = [
+    "{{ if or (.Working.Changed) (.Staging.Changed) }}#FF9248{{ end }}",
+    "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#ff4500{{ end }}",
+    "{{ if gt .Ahead 0 }}#B388FF {{ end }}",
+    "{{ if gt .Behind 0 }}#B388FF {{ end }}"
+]
+template = " {{ .UpstreamIcon }} {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} "
+[blocks.segments.properties]
+branch_max_length = 25
+      branch_icon = ' '
+      fetch_stash_count = true # counts the amount of non added changes
+      fetch_status = true
+      fetch_upstream_icon = true #github symbol
+
+
+    [[blocks.segments]]
+      type = 'time'
+      style = "diamond"
+      foreground = "#000000"
+      background = "p:salmon"
+      leading_diamond= "<transparent,p:salmon>\ue0b0</>"
+
+        newline=true
+      [blocks.segments.properties]
+        time_format = "15:04  "
+     
+#newline text block
+[[blocks]]
+  type ='prompt'
+  alignment = 'left'
+#aparencia do prompt no comando atual
+  [[blocks.segments]]
+    type = "text"
+    style = "plain"
+    foreground = "p:black"
+
+    template="\u2570\ue285<p:salmon>\ueab6</>"
+
+
+
+#aparencia do prompt no historico de comandos
+  [transient_prompt]
+   foreground_templates = [
+     "{{if gt .Code 0}}p:red{{end}}", #red, if equals 0
+     "{{if eq .Code 0}}p:green{{end}}",#magenta, if equals 
+   ]
+   background = "transparent"
+   template= ') '
+   newline = true
+    
+
+    [secondary_prompt]
+      foreground = "p:yellow"
+      background = "transparent"
+      template= ')) ' 
