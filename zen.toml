@@ -12,6 +12,7 @@ final_space = true
   orange = '#F07623'
   yellow = '#F3AE35'
   salmon = '#C56C58'
+  salmonBright = '#FA8072'
   white = '#E0DEF4'
 
 [[blocks]]
@@ -31,8 +32,9 @@ final_space = true
         "{{if eq .Code 0}}p:white{{end}}",#magenta, if equals 
     ]
   [blocks.segments.properties]
-   macos = "\uf179 "
-    ubuntu = "\uf31b "
+   macos = " "
+   ubuntu = " "
+   # ubuntu = "󰻀 "
    windows = " "
 
  [[blocks.segments]]
@@ -46,7 +48,7 @@ final_space = true
     [blocks.segments.properties]
     style = "agnoster_short"
     mixed_threshold = 6  #max amount of letters for mixed
-    max_depth = 2  #levels before agnoster uses folderIcon
+    max_depth = 3  #levels before agnoster uses folderIcon
 
     # folder_separator_icon = "<p:white>\ueab6 </>"
     folder_separator_icon = "/"
@@ -56,12 +58,11 @@ final_space = true
     # folder_format = "<p:white>%s</>"
 
 ##HOME apple
-    # home_icon = " \uf179 "
-    home_icon = ""
+    home_icon = "" 
     # hide_root_location = true
     # left_format = "<p:transparentt>%s</>"
 ## Cwd
-    right_format = "<#FA8072>%s</>"#salmon bright 
+    right_format = "<p:salmonBright>%s</>"#salmon bright 
 
  [[blocks.segments]]
     background= "p:black"
@@ -87,7 +88,7 @@ style = "diamond"
 foreground= "p:yellow"
 background= "p:Dblue"
 
-leading_diamond ="<p:Dblue,transparent>\ue0b2</>"
+leading_diamond ="<p:Dblue,transparent></>"
 trailing_diamond = "<p:Dblue,transparent></>"
 #background = "#191f48"
 #powerline_symbol = ""
@@ -115,9 +116,9 @@ branch_max_length = 10
     [[blocks.segments]]
       type = 'time'
       style = "diamond"
-      foreground = "#000000"
+      foreground = "p:black"
       background = "p:salmon"
-      leading_diamond= "<transparent,p:salmon>\ue0b0</>"
+      leading_diamond= "<transparent,p:salmon></>"
 
         newline=true
       [blocks.segments.properties]
@@ -133,7 +134,7 @@ branch_max_length = 10
     style = "plain"
     foreground = "p:black"
 
-    template="\u2570\ue285<p:salmon>\ueab6</>"
+    template="╰<p:salmon></>"
 
 
 
