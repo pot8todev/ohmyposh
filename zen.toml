@@ -39,6 +39,7 @@ final_space = true
   type = "path"
   style = "plain"
   powerline_symbol = ""
+  # background = "p:Dblue"
   template = " {{ .Path }} "
   newline=true
 
@@ -47,10 +48,18 @@ final_space = true
     mixed_threshold = 6  #max amount of letters for mixed
     max_depth = 2  #levels before agnoster uses folderIcon
 
+    # folder_separator_icon = "<p:white>\ueab6 </>"
     folder_separator_icon = "/"
 
+## if we change style to agnoster
+    # folder_icon = " "
+    # folder_format = "<p:white>%s</>"
 
+##HOME apple
+    # home_icon = " \uf179 "
     home_icon = ""
+    # hide_root_location = true
+    # left_format = "<p:transparentt>%s</>"
 ## Cwd
     right_format = "<#FA8072>%s</>"#salmon bright 
 
@@ -75,20 +84,25 @@ style = 'roundrock'
 [[blocks.segments]]
 type = "git"
 style = "diamond"
-foreground= "p:yellow"
+foreground= "p:orange"
 background= "p:Dblue"
 
 leading_diamond ="<p:Dblue,transparent>\ue0b2</>"
-trailing_diamond = "<p:Dblue,transparent>\ue0b0</>"
+trailing_diamond = "<p:Dblue,transparent></>"
+#background = "#191f48"
+#powerline_symbol = ""
+# trailing_diamond = ""
+
+#adde README explaining all this
 foreground_templates = [
-    "{{ if or (.Working.Changed) (.Staging.Changed) }}#FF9248{{ end }}",
+    "{{ if or (.Working.Changed) (.Staging.Changed) }}p:blue{{ end }}",
     "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#ff4500{{ end }}",
     "{{ if gt .Ahead 0 }}#B388FF {{ end }}",
     "{{ if gt .Behind 0 }}#B388FF {{ end }}"
 ]
 template = " {{ .UpstreamIcon }} {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} "
 [blocks.segments.properties]
-branch_max_length = 25
+branch_max_length = 10 
       branch_icon = ' '
       fetch_stash_count = true # counts the amount of non added changes
       fetch_status = true
@@ -117,4 +131,11 @@ branch_max_length = 25
     foreground = "p:black"
 
     template="\u2570\ue285<p:salmon>\ueab6</>"
+
+
+
+#aparencia do prompt no historico de comandos
+  [transient_prompt]
+   background = "transparent"
+   template= ') '
 
