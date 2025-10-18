@@ -24,7 +24,7 @@ final_space = true
     type = "os"
     style = "diamond"
     background= "p:black"
-  trailing_diamond = "<p:black,transparent></>"
+    trailing_diamond = "<p:black,transparent></>"
 
     template = " {{ if .WSL }}WSL at {{ end }}{{.Icon}}"
     foreground_templates = [
@@ -96,7 +96,7 @@ trailing_diamond = "<p:Dblue,transparent></>"
 
 #adde README explaining all this
 foreground_templates = [
-    "{{ if or (.Working.Changed) (.Staging.Changed) }}p:blue{{ end }}",#  󰱒 non-staged/non-commited
+    "{{ if or (.Working.Changed) (.Staging.Changed) }}p:salmon{{ end }}",#  󰱒 non-staged/non-commited
     "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:white{{ end }}",#if is ahead AND behind, we diverged.
     "{{ if gt .Ahead 0 }}#8566FF {{ end }}",#if commit is ahead/behind
     "{{ if gt .Behind 0 }}#B388FF {{ end }}"
