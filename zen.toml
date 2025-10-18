@@ -102,7 +102,12 @@ foreground_templates = [
     "{{ if gt .Behind 0 }}#B388FF {{ end }}"
 
 ]
-template = " {{ .UpstreamIcon }} {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} "
+# 
+#'main' 
+#≡
+#  ?1 ~1  -staged||unstaged, n files
+#  stashed
+template = " {{ .UpstreamIcon }} {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }} {{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} "
 #branch_status:<working changes: ↑-aheoad ↓-behind, <qntCommits>> '|'<staging changes>;
 
 [blocks.segments.properties]
